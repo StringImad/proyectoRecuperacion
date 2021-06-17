@@ -1,0 +1,42 @@
+[ {
+  "numeroPedido" : "55872021",
+  "fechaPedido" : "12/12/2021",
+  "empresa" : {
+    "nomEmpresa" : "Bar Paco",
+    "direccionEmpresa" : "Calle del medio, Estepona (malaga)",
+    "numeroEmpresa" : "952830229",
+    "listaClientes" : null,
+    "listaPedidos" : null,
+    "listaProductos" : null,
+    "cif" : "345"
+  },
+  "cliente" : {
+    "nombre" : "Adri",
+    "apellido" : "Garcia",
+    "direccion" : "calle dali",
+    "codCliente" : "16",
+    "formaPago" : "tarjeta"
+  },
+  "formaEnvio" : "Si",
+  "listaProductos" : [ {
+    "numProducto" : "1004",
+    "descriProducto" : "Creacion personalizada",
+    "precioProducto" : 5220.0,
+    "horasEstimadas" : 4,
+    "fechaComienzo" : "01/02/2020",
+    "fechaFin" : {
+      "year" : 2020,
+      "month" : "FEBRUARY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : true,
+      "dayOfYear" : 34,
+      "era" : "CE",
+      "monthValue" : 2,
+      "dayOfMonth" : 3
+    }
+  } ]
+} ]

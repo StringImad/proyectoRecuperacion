@@ -1,0 +1,136 @@
+[ {
+  "numProducto" : "40",
+  "descriProducto" : "botella el embrujo",
+  "precioProducto" : 30.0,
+  "anyosGarantia" : 2,
+  "peso" : 1.0,
+  "lugarFabricacion" : "La rioja"
+}, {
+  "numProducto" : "41",
+  "descriProducto" : "Tv samsun",
+  "precioProducto" : 540.0,
+  "anyosGarantia" : 4,
+  "peso" : 15.0,
+  "lugarFabricacion" : "Corea del Sur"
+}, {
+  "numProducto" : "42",
+  "descriProducto" : "Iphone 10",
+  "precioProducto" : 800.0,
+  "anyosGarantia" : 1,
+  "peso" : 0.4,
+  "lugarFabricacion" : "China"
+}, {
+  "numProducto" : "43",
+  "descriProducto" : "Altavoz mini boom",
+  "precioProducto" : 90.0,
+  "anyosGarantia" : 2,
+  "peso" : 4.0,
+  "lugarFabricacion" : "Alemania"
+}, {
+  "numProducto" : "44",
+  "descriProducto" : "radio 1002",
+  "precioProducto" : 40.0,
+  "anyosGarantia" : 10,
+  "peso" : 1.0,
+  "lugarFabricacion" : "Suecia"
+}, {
+  "numProducto" : "1000",
+  "descriProducto" : "limpiza integra",
+  "precioProducto" : 400.0,
+  "horasEstimadas" : 23,
+  "fechaComienzo" : "12/02/2021",
+  "fechaFin" : {
+    "year" : 2021,
+    "month" : "MARCH",
+    "dayOfWeek" : "SUNDAY",
+    "leapYear" : false,
+    "dayOfYear" : 87,
+    "era" : "CE",
+    "monthValue" : 3,
+    "dayOfMonth" : 28,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    }
+  }
+}, {
+  "numProducto" : "1001",
+  "descriProducto" : "Desmontaje",
+  "precioProducto" : 5004.0,
+  "horasEstimadas" : 10,
+  "fechaComienzo" : "02/05/2021",
+  "fechaFin" : {
+    "year" : 2021,
+    "month" : "MAY",
+    "dayOfWeek" : "TUESDAY",
+    "leapYear" : false,
+    "dayOfYear" : 138,
+    "era" : "CE",
+    "monthValue" : 5,
+    "dayOfMonth" : 18,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    }
+  }
+}, {
+  "numProducto" : "1002",
+  "descriProducto" : "limpiza integra",
+  "precioProducto" : 640.0,
+  "horasEstimadas" : 11,
+  "fechaComienzo" : "01/02/2021",
+  "fechaFin" : {
+    "year" : 2021,
+    "month" : "MARCH",
+    "dayOfWeek" : "MONDAY",
+    "leapYear" : false,
+    "dayOfYear" : 81,
+    "era" : "CE",
+    "monthValue" : 3,
+    "dayOfMonth" : 22,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    }
+  }
+}, {
+  "numProducto" : "1003",
+  "descriProducto" : "SEO",
+  "precioProducto" : 420.0,
+  "horasEstimadas" : 33,
+  "fechaComienzo" : "14/04/2021",
+  "fechaFin" : {
+    "year" : 2021,
+    "month" : "JUNE",
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : false,
+    "dayOfYear" : 160,
+    "era" : "CE",
+    "monthValue" : 6,
+    "dayOfMonth" : 9,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    }
+  }
+}, {
+  "numProducto" : "1004",
+  "descriProducto" : "Creacion personalizada",
+  "precioProducto" : 5220.0,
+  "horasEstimadas" : 4,
+  "fechaComienzo" : "01/02/2020",
+  "fechaFin" : {
+    "year" : 2020,
+    "month" : "FEBRUARY",
+    "dayOfWeek" : "MONDAY",
+    "leapYear" : true,
+    "dayOfYear" : 34,
+    "era" : "CE",
+    "monthValue" : 2,
+    "dayOfMonth" : 3,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    }
+  }
+} ]

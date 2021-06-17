@@ -1,0 +1,37 @@
+[ {
+  "nombre" : "Juan",
+  "apellido" : "Fernandez",
+  "direccion" : "calle almargo",
+  "codCliente" : "12",
+  "formaPago" : "efectivo"
+}, {
+  "nombre" : "Alberto",
+  "apellido" : "Jimenez",
+  "direccion" : "calle melocoton",
+  "codCliente" : "13",
+  "formaPago" : "efectivo"
+}, {
+  "nombre" : "Maria",
+  "apellido" : "Torres",
+  "direccion" : "calle sandia",
+  "codCliente" : "14",
+  "formaPago" : "tarjeta"
+}, {
+  "nombre" : "Pepe",
+  "apellido" : "Cabllero",
+  "direccion" : "calle virgo",
+  "codCliente" : "15",
+  "formaPago" : "efectivo"
+}, {
+  "nombre" : "Adri",
+  "apellido" : "Garcia",
+  "direccion" : "calle dali",
+  "codCliente" : "16",
+  "formaPago" : "tarjeta"
+}, {
+  "nombre" : "Manolo",
+  "apellido" : "Fernande",
+  "direccion" : "calle orde",
+  "codCliente" : "20",
+  "formaPago" : "efectivo"
+} ]

@@ -1,0 +1,36 @@
+[ {
+  "numeroPedido" : "20442021",
+  "fechaPedido" : "12/10/2021",
+  "empresa" : {
+    "nomEmpresa" : "InformaTIC",
+    "direccionEmpresa" : "Calle del medio, Estepona (malaga)",
+    "numeroEmpresa" : "952830229",
+    "listaClientes" : null,
+    "listaPedidos" : null,
+    "listaProductos" : null,
+    "cif" : "345"
+  },
+  "cliente" : {
+    "nombre" : "Maria",
+    "apellido" : "Torres",
+    "direccion" : "calle sandia",
+    "codCliente" : "14",
+    "formaPago" : "tarjeta"
+  },
+  "formaEnvio" : "Si",
+  "listaProductos" : [ {
+    "numProducto" : "1004",
+    "descriProducto" : "Creacion personalizada",
+    "precioProducto" : 5220.0,
+    "horasEstimadas" : 4,
+    "fechaComienzo" : "01/02/2020",
+    "fechaFin" : "03/02/2020"
+  }, {
+    "numProducto" : "42",
+    "descriProducto" : "Iphone 10",
+    "precioProducto" : 800.0,
+    "anyosGarantia" : 1,
+    "peso" : 0.4,
+    "lugarFabricacion" : "China"
+  } ]
+} ]
