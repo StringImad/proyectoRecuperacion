@@ -14,8 +14,10 @@ import imad.proyectorecuperacionimad.Servicios;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -36,10 +38,10 @@ public class ServicioPedidos {
     private static ArrayList<Pedidos> listaPedidos = new ArrayList<>();
     private static ArrayList<Clientes> listaClientesPedid = new ArrayList<>();
     private static ArrayList<Productos> listaProductosPedid = new ArrayList<>();
-     private static   Empresa empresaDefecto = new Empresa("345", "InformaTIC", "Calle del medio, Estepona (malaga)", "952830229");
+    private static Empresa empresaDefecto = new Empresa("345", "InformaTIC", "Calle del medio, Estepona (malaga)", "952830229");
 
 //        private static ArrayList<Clientes> listaClientes;
-    public static Pedidos crearPedido(ArrayList<Clientes> listaClientes, ArrayList<Productos> listaProductos) {
+    public static Pedidos crearPedido(ArrayList<Clientes> listaClientes, ArrayList<Productos> listaProductos, Empresa nueva) {
         //  Empresa empresaDefecto = new Empresa("345", "InformaTIC", "Calle del medio, Estepona (malaga)", "952830229", listaClientes, listaPedidos, listaProductos);
 
         boolean comprobacion = true;
@@ -47,10 +49,13 @@ public class ServicioPedidos {
         Clientes clienteNuevo = new Clientes();
         boolean repetir = true;
 
+        boolean repetirFecha = true;
+
         fechaPedido = JOptionPane.showInputDialog("Ingrese la fecha del pedido formato: (dd/MM/yyyy");
 
         LocalDate fechaPedi = LocalDate.parse(fechaPedido, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         pedidoNuevo.setFechaPedido(fechaPedi);
+
         cliente = JOptionPane.showInputDialog("Ingrese el codigo del cliente para asociar a un pedido: \n" + listaClientes);
         for (int i = 0; i < listaClientes.size(); i++) {
             if (listaClientes.get(i).getCodCliente().equals(cliente)) {
@@ -58,7 +63,7 @@ public class ServicioPedidos {
             }
         }
         pedidoNuevo.setCliente(clienteNuevo);
-        pedidoNuevo.setEmpresa(empresaDefecto);
+        pedidoNuevo.setEmpresa(nueva);
 
         pedidoNuevo.setNumeroPedido(Pedidos.generadorNumeroPedido());
 
@@ -84,17 +89,18 @@ public class ServicioPedidos {
 
     }
 
-    public static Pedidos modificarPedidos(String codPedido, ArrayList<Clientes> listaClientes, ArrayList<Productos> listaProductos) {
+    public static Pedidos modificarPedidos(String codPedido, Empresa empresaNueva) {
         Pedidos pedidoModificado = new Pedidos();
-        listaClientesPedid = listaClientes;
+        listaClientesPedid = empresaNueva.getListaClientes();
         Clientes clienteModificado = new Clientes();
-        for (int i = 0; i < listaPedidos.size(); i++) {
-            if (codPedido.equals(listaPedidos.get(i).getNumeroPedido())) {
+        for (int i = 0; i < empresaNueva.getListaPedidos().size(); i++) {
+            if (codPedido.equals(empresaNueva.getListaPedidos().get(i).getNumeroPedido())) {
+
                 pedidoModificado = listaPedidos.get(i);
                 boolean repetir = true;
                 do {
                     // Creamos un objeto de tipo pedfechaido
-                    String[] botonesDatos = {"Nombre", "Cliente", "forma envio", "Productos",  "salir"};
+                    String[] botonesDatos = {"Nombre", "Cliente", "forma envio", "Productos", "salir"};
 
                     if (pedidoModificado != null) {
                         int ventanaModificar = JOptionPane.showOptionDialog(null, "¿Qué desea modificar?", " ",
@@ -123,10 +129,10 @@ public class ServicioPedidos {
                                 break;
                             case 3:
                                 do {
-                                    codigo = JOptionPane.showInputDialog("Ingrese un producto de la lista \n" + listaProductos);
-                                    for (int j = 0; j < listaProductos.size(); i++) {
-                                        if (listaProductos.get(j).getNumProducto().equals(codigo)) {
-                                            listaProductosSolicitados.add(listaProductos.get(j));
+                                    codigo = JOptionPane.showInputDialog("Ingrese un producto de la lista \n" + empresaNueva.getListaProductos());
+                                    for (int j = 0; j < empresaNueva.getListaProductos().size(); i++) {
+                                        if (empresaNueva.getListaProductos().get(j).getNumProducto().equals(codigo)) {
+                                            listaProductosSolicitados.add(empresaNueva.getListaProductos().get(j));
                                         }
                                     }
 
@@ -134,7 +140,7 @@ public class ServicioPedidos {
                                 } while (repetir);
                                 pedidoModificado.setListaProductos(listaProductosSolicitados);
                                 break;
-                         
+
                             case 4:
                                 JOptionPane.showMessageDialog(null, "Pulse aceptar para salir a la pantalla de inicio.");
                                 // al pulsar en case 5 se pone reptir en false por lo tanto sale del programa y
@@ -196,7 +202,7 @@ public class ServicioPedidos {
         // al final del fichero idFichero
         // Estructura try-with-resources. Instancia el objeto con el fichero a escribir
         // y se encarga de cerrar el recurso "flujo" una vez finalizadas las operaciones
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             flujo.write(pedido.toString());
 
             // Metodo newLine() añade salto de línea después de cada fila

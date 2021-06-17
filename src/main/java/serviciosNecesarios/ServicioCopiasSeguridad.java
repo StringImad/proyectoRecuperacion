@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import imad.proyectorecuperacionimad.Articulos;
 import imad.proyectorecuperacionimad.Clientes;
+import imad.proyectorecuperacionimad.Empresa;
 import imad.proyectorecuperacionimad.Pedidos;
 import imad.proyectorecuperacionimad.Productos;
 import imad.proyectorecuperacionimad.Servicios;
@@ -64,9 +65,9 @@ public class ServicioCopiasSeguridad {
 
     }
 
-    public static ArrayList leerJSONClientes(String idFichero) {
+    public static ArrayList leerJSONClientes(String idFichero, Empresa nueva) {
         System.out.println("----------------------------Leyendo fichero  JSON---------------------------------------");
-        ArrayList<Clientes> listaClientesLeida = new ArrayList<>();
+        ArrayList<Clientes> listaClientesLeida = nueva.getListaClientes();
 
         try {
             ObjectMapper mapeador = new ObjectMapper();

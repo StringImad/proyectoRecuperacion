@@ -1,0 +1,128 @@
+[ {
+  "numeroPedido" : "84682021",
+  "fechaPedido" : "12/12/2021",
+  "empresa" : {
+    "nomEmpresa" : "InformaTIC",
+    "direccionEmpresa" : "Calle del medio, Estepona (malaga)",
+    "numeroEmpresa" : "952830229",
+    "listaClientes" : [ {
+      "nombre" : "Juan",
+      "apellido" : "Fernandez",
+      "direccion" : "calle almargo",
+      "codCliente" : "12",
+      "formaPago" : "efectivo"
+    }, {
+      "nombre" : "Alberto",
+      "apellido" : "Jimenez",
+      "direccion" : "calle melocoton",
+      "codCliente" : "13",
+      "formaPago" : "efectivo"
+    }, {
+      "nombre" : "Maria",
+      "apellido" : "Torres",
+      "direccion" : "calle sandia",
+      "codCliente" : "14",
+      "formaPago" : "tarjeta"
+    }, {
+      "nombre" : "Pepe",
+      "apellido" : "Cabllero",
+      "direccion" : "calle virgo",
+      "codCliente" : "15",
+      "formaPago" : "efectivo"
+    }, {
+      "nombre" : "Adri",
+      "apellido" : "Garcia",
+      "direccion" : "calle dali",
+      "codCliente" : "16",
+      "formaPago" : "tarjeta"
+    } ],
+    "listaProductos" : [ {
+      "numProducto" : "40",
+      "descriProducto" : "botella el embrujo",
+      "precioProducto" : 30.0,
+      "anyosGarantia" : 2,
+      "peso" : 1.0,
+      "lugarFabricacion" : "La rioja"
+    }, {
+      "numProducto" : "41",
+      "descriProducto" : "Tv samsun",
+      "precioProducto" : 540.0,
+      "anyosGarantia" : 4,
+      "peso" : 15.0,
+      "lugarFabricacion" : "Corea del Sur"
+    }, {
+      "numProducto" : "42",
+      "descriProducto" : "Iphone 10",
+      "precioProducto" : 800.0,
+      "anyosGarantia" : 1,
+      "peso" : 0.4,
+      "lugarFabricacion" : "China"
+    }, {
+      "numProducto" : "43",
+      "descriProducto" : "Altavoz mini boom",
+      "precioProducto" : 90.0,
+      "anyosGarantia" : 2,
+      "peso" : 4.0,
+      "lugarFabricacion" : "Alemania"
+    }, {
+      "numProducto" : "44",
+      "descriProducto" : "radio 1002",
+      "precioProducto" : 40.0,
+      "anyosGarantia" : 10,
+      "peso" : 1.0,
+      "lugarFabricacion" : "Suecia"
+    }, {
+      "numProducto" : "1000",
+      "descriProducto" : "limpiza integra",
+      "precioProducto" : 400.0,
+      "horasEstimadas" : 23,
+      "fechaComienzo" : "12/02/2021",
+      "fechaFin" : "28/03/2021"
+    }, {
+      "numProducto" : "1001",
+      "descriProducto" : "Desmontaje",
+      "precioProducto" : 5004.0,
+      "horasEstimadas" : 10,
+      "fechaComienzo" : "02/05/2021",
+      "fechaFin" : "18/05/2021"
+    }, {
+      "numProducto" : "1002",
+      "descriProducto" : "limpiza integra",
+      "precioProducto" : 640.0,
+      "horasEstimadas" : 11,
+      "fechaComienzo" : "01/02/2021",
+      "fechaFin" : "22/03/2021"
+    }, {
+      "numProducto" : "1003",
+      "descriProducto" : "SEO",
+      "precioProducto" : 420.0,
+      "horasEstimadas" : 33,
+      "fechaComienzo" : "14/04/2021",
+      "fechaFin" : "09/06/2021"
+    }, {
+      "numProducto" : "1004",
+      "descriProducto" : "Creacion personalizada",
+      "precioProducto" : 5220.0,
+      "horasEstimadas" : 4,
+      "fechaComienzo" : "01/02/2020",
+      "fechaFin" : "03/02/2020"
+    } ],
+    "cif" : "345"
+  },
+  "cliente" : {
+    "nombre" : "Adri",
+    "apellido" : "Garcia",
+    "direccion" : "calle dali",
+    "codCliente" : "16",
+    "formaPago" : "tarjeta"
+  },
+  "formaEnvio" : "Si",
+  "listaProductos" : [ {
+    "numProducto" : "1004",
+    "descriProducto" : "Creacion personalizada",
+    "precioProducto" : 5220.0,
+    "horasEstimadas" : 4,
+    "fechaComienzo" : "01/02/2020",
+    "fechaFin" : "03/02/2020"
+  } ]
+} ]

@@ -5,7 +5,10 @@
  */
 package imad.proyectorecuperacionimad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import lectura.LecturaFicheros;
 
 /**
  *
@@ -17,36 +20,65 @@ public class Empresa {
     private String nomEmpresa;
     private String direccionEmpresa;
     private String numeroEmpresa;
-   private ArrayList<Clientes> listaClientes;
+    private ArrayList<Clientes> listaClientes;
+    @JsonIgnore
     private ArrayList<Pedidos> listaPedidos;
     private ArrayList<Productos> listaProductos;
 //
+
     public Empresa(String Cif, String nomEmpresa, String direccionEmpresa, String numeroEmpresa) {
         this.Cif = Cif;
         this.nomEmpresa = nomEmpresa;
         this.direccionEmpresa = direccionEmpresa;
         this.numeroEmpresa = numeroEmpresa;
     }
+//String Cif, String nomEmpresa, String direccionEmpresa, String numeroEmpresa, ArrayList<Clientes> listaClientes, ArrayList<Pedidos> listaPedidos, ArrayList<Productos> listaProductos
 
-    public Empresa(String Cif, String nomEmpresa, String direccionEmpresa, String numeroEmpresa, ArrayList<Clientes> listaClientes, ArrayList<Pedidos> listaPedidos, ArrayList<Productos> listaProductos) {
-        this.Cif = Cif;
-        this.nomEmpresa = nomEmpresa;
-        this.direccionEmpresa = direccionEmpresa;
-        this.numeroEmpresa = numeroEmpresa;
-        this.listaClientes = listaClientes;
+    public Empresa(ArrayList<Pedidos> listaPedidos) throws FileNotFoundException {
+        this.Cif = "345";
+        this.nomEmpresa = "InformaTIC";
+        this.direccionEmpresa = "Calle del medio, Estepona (malaga)";
+        this.numeroEmpresa = "952830229";
+        this.listaClientes = LecturaFicheros.leerFicheroCsvClientes("clientes.csv");
+
         this.listaPedidos = listaPedidos;
-        this.listaProductos = listaProductos;
-    }
+      
+        this.listaProductos = rellenarListaProductos();
 
-//    public Empresa(String numeroEmpresa, ArrayList<Clientes> listaClientes, ArrayList<Pedidos> listaPedidos, ArrayList<Productos> listaProductos) {
-//        this.Cif = "323";
-//        this.nomEmpresa = "Bar Paco";
-//        this.direccionEmpresa = "Calle del medio, Estepona (malaga)";
-//        this.numeroEmpresa = numeroEmpresa;
-//        this.listaClientes = listaClientes;
-//        this.listaPedidos = listaPedidos;
-//        this.listaProductos = listaProductos;
+    }
+     public static ArrayList<Pedidos> rellenarListaPedidos(Pedidos nuevo) throws FileNotFoundException {
+         ArrayList<Pedidos> listaPedidos = new ArrayList<>();
+     listaPedidos.add(nuevo);
+        return listaPedidos;
+    }
+     
+//         public static ArrayList<Pedidos> rellenarLista() throws FileNotFoundException {
+//         ArrayList<Pedidos> listaPedidos =rellenarListaPedidos(nuevo);
+//        return listaPedidos;
+//         }
+     
+//      public static ArrayList<Pedidos> rellenarLista() {
+//        ArrayList<Pedidos> listaPedidos = new ArrayList<>();
+//     listaPedidos.add(nuevo);
+//        return listaPedidos;
 //    }
+ public static ArrayList<Clientes> rellenarListaClientes() throws FileNotFoundException {
+        ArrayList<Clientes> listaClientes =  LecturaFicheros.leerFicheroCsvClientes("clientes.csv");
+     
+        return listaClientes;
+    }
+    public static ArrayList<Productos> rellenarListaProductos() throws FileNotFoundException {
+        ArrayList<Productos> listaProductos = new ArrayList<>();
+        ArrayList<Articulos> listaArticulos = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
+        ArrayList<Servicios> listaServicios = LecturaFicheros.leerFicheroCsvServicios("servicios.csv");
+        for (int i = 0; i < listaArticulos.size(); i++) {
+            listaProductos.add(listaArticulos.get(i));
+        }
+        for (int i = 0; i < listaServicios.size(); i++) {
+            listaProductos.add(listaServicios.get(i));
+        }
+        return listaProductos;
+    }
 
     public ArrayList<Clientes> getListaClientes() {
         return listaClientes;

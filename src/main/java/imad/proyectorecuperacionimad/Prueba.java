@@ -9,13 +9,11 @@ import java.io.File;
 import serviciosNecesarios.ServicioProductos;
 import serviciosNecesarios.ServicioClientes;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
-import lectura.LecturaFicheros;
 import serviciosNecesarios.ServicioCopiasSeguridad;
 import serviciosNecesarios.ServicioPedidos;
 
@@ -28,20 +26,20 @@ public class Prueba {
     public static void main(String[] args) throws FileNotFoundException {
 
         //Rellenamos las listas con los datos que tenemos en los ficheros
-        ArrayList<Clientes> listaClientes = LecturaFicheros.leerFicheroCsvClientes("clientes.csv");
-        ArrayList<Articulos> listaArticulos = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
-        ArrayList<Servicios> listaServicios = LecturaFicheros.leerFicheroCsvServicios("servicios.csv");
-//Para rellenar la lista de productos necitamos volcar los datos de las dos listas en la lista productos
-        ArrayList<Productos> listaProductos = new ArrayList<>();
+//        ArrayList<Clientes> listaClientes = LecturaFicheros.leerFicheroCsvClientes("clientes.csv");
+//        ArrayList<Articulos> listaArticulos = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
+//        ArrayList<Servicios> listaServicios = LecturaFicheros.leerFicheroCsvServicios("servicios.csv");
+//        ArrayList<Productos> listaProductos = new ArrayList<>();
         ArrayList<Pedidos> listaPedidos = new ArrayList<>();
-
-        for (int i = 0; i < listaArticulos.size(); i++) {
-            listaProductos.add(listaArticulos.get(i));
-        }
-        for (int i = 0; i < listaServicios.size(); i++) {
-            listaProductos.add(listaServicios.get(i));
-        }
+//Para rellenar la lista de productos necitamos volcar los datos de las dos listas en la lista productos
+//        for (int i = 0; i < listaArticulos.size(); i++) {
+//            listaProductos.add(listaArticulos.get(i));
+//        }
+//        for (int i = 0; i < listaServicios.size(); i++) {
+//            listaProductos.add(listaServicios.get(i));
+//        }
 //  
+        Empresa nueva = new Empresa(listaPedidos);
 
         boolean repetir = true;
         String codigo = "";
@@ -61,16 +59,16 @@ public class Prueba {
                     switch (ventanaMostrar) {
                         case 0:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes clientes: \n" + listaClientes);
+                                    "Actualmente tenemos registrados los siguientes clientes: \n" + nueva.getListaClientes());
 
                             break;
                         case 1:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes productos: \n" + listaProductos);
+                                    "Actualmente tenemos registrados los siguientes productos: \n" + nueva.getListaProductos());
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + listaPedidos);
+                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + nueva.getListaPedidos());
                             break;
 
                         case 3:
@@ -95,22 +93,22 @@ public class Prueba {
 
 //                            do {
                             codigo = JOptionPane.showInputDialog(
-                                    "Actualmente tenemos registrados los siguientes clientes: \n" + listaClientes
+                                    "Actualmente tenemos registrados los siguientes clientes: \n" + nueva.getListaClientes()
                                     + "Escriba el codigo");
-                            ServicioClientes.modificarCliente(codigo, listaClientes);
+                            ServicioClientes.modificarCliente(codigo, nueva.getListaClientes());
                             break;
                         case 1:
 
                             codigo = JOptionPane.showInputDialog(
                                     "Actualmente tenemos registrados los siguientes Productos: \n"
-                                    + listaProductos + "Escriba el codigo");
-                            ServicioProductos.modificarProducto(codigo,listaProductos);
+                                    + nueva.getListaProductos() + "Escriba el codigo");
+                            ServicioProductos.modificarProducto(codigo, nueva.getListaProductos());
                             break;
                         case 2:
                             codigo = JOptionPane.showInputDialog(
                                     "Actualmente tenemos registrados los siguientes pedidos: \n"
-                                    + listaPedidos + "Escriba el codigo");
-                            ServicioPedidos.modificarPedidos(codigo, listaClientes, listaProductos);
+                                    + nueva.getListaPedidos() + "Escriba el codigo");
+                            ServicioPedidos.modificarPedidos(codigo, nueva);
 
                             break;
 
@@ -133,22 +131,24 @@ public class Prueba {
                     switch (ventanaCrear) {
                         case 0:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes clientes: \n" + listaClientes
+                                    "Actualmente tenemos registrados los siguientes clientes: \n" + nueva.getListaClientes()
                             );
-                            listaClientes.add(ServicioClientes.crearCliente());
+                            nueva.getListaClientes().add(ServicioClientes.crearCliente());
+                             nueva.getListaClientes().add(ServicioClientes.crearCliente());
 
                             break;
                         case 1:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes productos: \n" + listaProductos);
-                            listaProductos.add(ServicioProductos.crearProducto());
+                                    "Actualmente tenemos registrados los siguientes productos: \n" + nueva.getListaProductos());
+                            nueva.getListaProductos().add(ServicioProductos.crearProducto());
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null,
-                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + listaPedidos);
+                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + nueva.getListaPedidos());
 
                             //  ServicioPedidos.crearPedido(listaClientes, listaProductos);
-                            listaPedidos.add(ServicioPedidos.crearPedido(listaClientes, listaProductos));
+                            nueva.getListaPedidos().add(ServicioPedidos.crearPedido(nueva.getListaClientes(), nueva.getListaProductos(), nueva));
+
                             break;
 
                         case 3:
@@ -170,12 +170,12 @@ public class Prueba {
                     switch (ventanaBorrar) {
                         case 0:
                             codigo = JOptionPane.showInputDialog(
-                                    "Actualmente tenemos registrados los siguientes clientes: \n" + listaClientes
+                                    "Actualmente tenemos registrados los siguientes clientes: \n" + nueva.getListaClientes()
                                     + "Escriba el codigo");
 
-                            for (int i = 0; i < listaClientes.size(); i++) {
-                                if (listaClientes.get(i).getCodCliente().equals(codigo)) {
-                                    listaClientes.remove(i);
+                            for (int i = 0; i < nueva.getListaClientes().size(); i++) {
+                                if (nueva.getListaClientes().get(i).getCodCliente().equals(codigo)) {
+                                    nueva.getListaClientes().remove(i);
                                 }
                             }
 
@@ -183,12 +183,12 @@ public class Prueba {
                             break;
                         case 1:
                             codigo = JOptionPane.showInputDialog(
-                                    "Actualmente tenemos registrados los siguientes productos: \n" + listaProductos
+                                    "Actualmente tenemos registrados los siguientes productos: \n" + nueva.getListaProductos()
                                     + "Escriba el codigo");
 
-                            for (int i = 0; i < listaProductos.size(); i++) {
-                                if (listaProductos.get(i).getNumProducto().equals(codigo)) {
-                                    listaProductos.remove(i);
+                            for (int i = 0; i < nueva.getListaProductos().size(); i++) {
+                                if (nueva.getListaProductos().get(i).getNumProducto().equals(codigo)) {
+                                    nueva.getListaProductos().remove(i);
                                 }
                             }
                             // ServicioProductos.borrarProducto(codigo);
@@ -196,11 +196,11 @@ public class Prueba {
                             break;
                         case 2:
                             codigo = JOptionPane.showInputDialog(
-                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + listaPedidos
+                                    "Actualmente tenemos registrados los siguientes pedidos: \n" + nueva.getListaPedidos()
                                     + "Escriba el codigo");
-                            for (int i = 0; i < listaPedidos.size(); i++) {
-                                if (listaPedidos.get(i).getNumeroPedido().equals(codigo)) {
-                                    listaPedidos.remove(i);
+                            for (int i = 0; i < nueva.getListaPedidos().size(); i++) {
+                                if (nueva.getListaPedidos().get(i).getNumeroPedido().equals(codigo)) {
+                                    nueva.getListaPedidos().remove(i);
                                 }
                             }
                             break;
@@ -221,12 +221,12 @@ public class Prueba {
 //                    boolean existe = false;
 //                    boolean comprobacion = true;
 //                   do{
-                       codigo = JOptionPane.showInputDialog(
-                            "Actualmente tenemos registrados los siguientes pedidos: \n" + listaPedidos
+                    codigo = JOptionPane.showInputDialog(
+                            "Actualmente tenemos registrados los siguientes pedidos: \n" + nueva.getListaPedidos()
                             + "Escriba el codigo");
-                    for (int i = 0; i < listaPedidos.size(); i++) {
-                        if (listaPedidos.get(i).getNumeroPedido().equals(codigo)) {
-                            ServicioPedidos.imprimirPedido(listaPedidos.get(i));
+                    for (int i = 0; i < nueva.getListaPedidos().size(); i++) {
+                        if (nueva.getListaPedidos().get(i).getNumeroPedido().equals(codigo)) {
+                            ServicioPedidos.imprimirPedido(nueva.getListaPedidos().get(i));
 //                            comprobacion = false;
                         }
                     }
@@ -235,7 +235,7 @@ public class Prueba {
 //                    
 //                    }
 //                   }while(comprobacion);
-                    
+
                     break;
                 case 5:
 
@@ -253,31 +253,29 @@ public class Prueba {
                             String fechaString2 = ya.format(formato2);
 
                             ServicioCopiasSeguridad.crearDirectorio("backup/" + fechaString2);
-                            ServicioCopiasSeguridad.generarFicheroJSON(listaClientes, "backup/" + fechaString2 + "/listaClientes.json");
-                            ServicioCopiasSeguridad.generarFicheroJSON(listaProductos, "backup/" + fechaString2 + "/listaProductos.json");
+                            ServicioCopiasSeguridad.generarFicheroJSON(nueva.getListaClientes(), "backup/" + fechaString2 + "/listaClientes.json");
+                            ServicioCopiasSeguridad.generarFicheroJSON(nueva.getListaProductos(), "backup/" + fechaString2 + "/listaProductos.json");
 
-                            ServicioCopiasSeguridad.generarFicheroJSON(listaPedidos, "backup/" + fechaString2 + "/listaPedidos.json");
+                            ServicioCopiasSeguridad.generarFicheroJSON(nueva.getListaPedidos(), "backup/" + fechaString2 + "/listaPedidos.json");
                             break;
                         case 1:
                             File directorio = new File("backup/");
                             String[] lista = directorio.list();
                             Arrays.sort(lista);
-                             codigo = JOptionPane.showInputDialog(
-                            "Actualmente tenemos lass siguientes copias: \n" + Arrays.toString(lista)
-                            + "Escriba el codigo de la que quiera regenerar");
-                      //       Para eliminar todos los elementos de un ArrayList bastará con que ejecutemos el método .clear().
-                             listaClientes.clear();
-                             listaClientes = ServicioCopiasSeguridad.leerJSONClientes("backup/"+codigo+"/listaClientes.json");
-                            
-                             listaPedidos.clear();
-                             listaPedidos = ServicioCopiasSeguridad.leerJSONPedidos("backup/"+codigo+"/listaPedidos.json");
-                          
-//                             
-//                             listaProductos.clear();
-//                            listaProductos = ServicioCopiasSeguridad.leerJSONProductos("backup/"+codigo+"/listaProductos.json");
-////                          
-                             
-                             break;
+                            codigo = JOptionPane.showInputDialog(
+                                    "Actualmente tenemos lass siguientes copias: \n" + Arrays.toString(lista)
+                                    + "Escriba el codigo de la que quiera regenerar");
+                            //       Para eliminar todos los elementos de un ArrayList bastará con que ejecutemos el método .clear().
+                            nueva.getListaClientes().clear();
+                            nueva.setListaClientes(ServicioCopiasSeguridad.leerJSONClientes("backup/" + codigo + "/listaClientes.json", nueva));
+                            //= ServicioCopiasSeguridad.leerJSONClientes("backup/" + codigo + "/listaClientes.json",nueva);
+
+//                            nueva.getListaProductos().clear();
+//                            nueva.setListaProductos(ServicioCopiasSeguridad.leerJSONProductos("backup/"+codigo+"/listaProductos.json"));
+                            nueva.getListaPedidos().clear();
+                            nueva.setListaPedidos(ServicioCopiasSeguridad.leerJSONPedidos("backup/" + codigo + "/listaPedidos.json"));
+//                          
+                            break;
 
                         case 2:
 

@@ -108,7 +108,7 @@ public class LecturaFicheros {
      
     
        public static ArrayList<Clientes> leerFicheroCsvClientes(String idFichero) {
-           ArrayList<Clientes> listaClientes = new ArrayList<>();
+        ArrayList<Clientes> listaClientes = new ArrayList<>();
         String[] tokens;
         String linea;
 
